@@ -1,24 +1,28 @@
 {
   "name": "ts-json-decode-generator",
-  "version": "0.1.0",
+  "version": "0.3.0",
+  "bin": {
+    "json2decoder": "./src/main.bs.js"
+  },
   "scripts": {
     "start": "node ./src/main.bs.js",
     "clean": "bsb -clean-world",
     "build": "bsb -make-world",
-    "watch": "bsb -make-world -w"
+    "watch": "bsb -make-world -w",
+    "prepublish": "yarn clean && yarn build && /usr/bin/env sed -i '1s;^;#!/usr/bin/env node\\n;' ./src/main.bs.js"
   },
   "keywords": [
     "BuckleScript"
   ],
   "author": "",
   "license": "MIT",
-  "devDependencies": {
-    "bs-platform": "^4.0.2"
-  },
   "dependencies": {
     "@glennsl/bs-json": "^2.0.0",
     "bs-node": "github:reasonml-community/bs-node",
     "command-line-args": "^5.0.2",
     "prettier": "^1.14.0"
+  },
+  "devDependencies": {
+    "bs-platform": "^4.0.5"
   }
 }
